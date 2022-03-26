@@ -4,35 +4,43 @@ function getRandomInt(max) {
 
 class figure{
     color;
+    figureId;
     coord = [];
     constructor(id){
         switch (id) {
             case 0:
                 this.color = "green";
+                this.figureId = 1;
                 this.coord.push([19,3], [19,4], [19,5], [19, 6]);
                 break;
             case 1:
                 this.color = "red";
+                this.figureId = 2;
                 this.coord.push([19,4], [19,5], [18,5], [18, 6]);
                 break;
             case 2:
                 this.color = "lime";
+                this.figureId = 3;
                 this.coord.push([18,4], [18,5], [19,5], [19, 6]);
                 break;
             case 3:
                 this.color = "yellow";
+                this.figureId = 4;
                 this.coord.push([19,4], [19,5], [18,4], [18, 5]);
                 break;
             case 4:
                 this.color = "purple";
+                this.figureId = 5;
                 this.coord.push([19,4], [18,3], [18,4], [18, 5]);
                 break;
             case 5:
                 this.color = "blue";
+                this.figureId = 6;
                 this.coord.push([19,3], [18,3], [18,4], [18, 5]);
                 break;
             case 6:
                 this.color = "orange";
+                this.figureId = 7;
                 this.coord.push([19,5], [18,3], [18,4], [18, 5]);
                 break;
             default:
@@ -71,7 +79,7 @@ class figure{
     newCoordLeft(){
         var newCoord = []
         for (let i = 0; i < 4; i++) {
-            newCoord.push([this.coord[i][0] - 1, this.coord[i][1] - 1]);
+            newCoord.push([this.coord[i][0], this.coord[i][1] - 1]);
         }
         return newCoord;
     }
@@ -85,6 +93,9 @@ class field{
     counter;
     waiter;
     velocity;
+    count = 0;
+    globalCount = 0;
+
     constructor(){
         this.setInitial();
     }
@@ -174,41 +185,46 @@ class field{
         this.showFigure(this.currentFigure);
     }
     moveRight(){
-        if(!this.isMoveable(this.currentFigure, 1)){
-            var counter = setTimeout(() => {
-            }, 1000);
-            return;
+        this.count = 0;
+        if(this.isMoveable(this.currentFigure, 1)){
+            this.removeFigure(this.currentFigure);
+            this.currentFigure.moveRight();
+            this.showFigure(this.currentFigure);
         }
-        this.removeFigure(this.currentFigure);
-        this.currentFigure.moveRight();
-        this.showFigure(this.currentFigure);
-    }
-    moveLeft(){
-        if(!this.isMoveable(this.currentFigure, 3)){
-            var counter = setTimeout(() => {
-            }, 1000);
-            return;
-        }
-        this.removeFigure(this.currentFigure);
-        this.currentFigure.moveLeft();
-        this.showFigure(this.currentFigure);
-    }
-    waitUntilPlaced(){
         
     }
+    moveLeft(){
+        this.count = 0;
+        if(this.isMoveable(this.currentFigure, 3)){
+            this.removeFigure(this.currentFigure);
+            this.currentFigure.moveLeft();
+            this.showFigure(this.currentFigure);
+        }
+    }
+
+    changeDirection(){
+
+    }
+
     onNewFigure(){
+        this.globalCount = 0;
         var figure = this.returnRandomFigure();
         this.currentFigure = figure;
         this.showFigure(this.currentFigure);
         var counter = setInterval(() => {
             if(!this.isMoveable(this.currentFigure, 2)){
-                // if(this.readyToPlace){
+                if(this.count == 3 || this.globalCount >= 10){
+                    this.count = 0;
                     this.setFigureOnPlace(this.currentFigure);
                     this.onNewFigure();
                     clearInterval(counter);
-                // }
+                }
+                else{
+                    this.count++;
+                    this.globalCount++;
+                }
             }
-            this.moveDown(figure);
+            this.moveDown(this.currentFigure);
         }, this.velocity);
     }
     startGame(velocity){
