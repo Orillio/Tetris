@@ -3,6 +3,15 @@ function getRandomInt(max) {
 }
 
 class figure{
+    countMultiplier;
+    globalCountMultiplier;
+    get countMultiplier(){
+
+    }
+    get globalCountMultiplier(){
+
+    }
+    rotation = 0;
     color;
     figureId;
     coord = [];
@@ -88,10 +97,8 @@ class figure{
 class field{
     cells = [[]]
     figures = [];
-    readyToPlace = false;
     currentFigure;
     counter;
-    waiter;
     velocity;
     count = 0;
     globalCount = 0;
@@ -185,6 +192,7 @@ class field{
         this.showFigure(this.currentFigure);
     }
     moveRight(){
+        console.log(this.count);
         this.count = 0;
         if(this.isMoveable(this.currentFigure, 1)){
             this.removeFigure(this.currentFigure);
@@ -194,6 +202,7 @@ class field{
         
     }
     moveLeft(){
+        console.log(this.count);
         this.count = 0;
         if(this.isMoveable(this.currentFigure, 3)){
             this.removeFigure(this.currentFigure);
@@ -201,11 +210,242 @@ class field{
             this.showFigure(this.currentFigure);
         }
     }
-
     changeDirection(){
+        var fig = this.currentFigure;
+        var new_fig = new figure();
+        var new_coord = [];
+        switch (fig.figureId) {
+            case 1:
+                if(this.currentFigure.rotation == 0){
+                    new_coord.push([fig.coord[0][0] + 1 , fig.coord[0][1] + 2])
+                    new_coord.push([fig.coord[1][0], fig.coord[1][1] + 1])
+                    new_coord.push([fig.coord[2][0] - 1,fig.coord[2][1]])
+                    new_coord.push([fig.coord[3][0] - 2, fig.coord[3][1] - 1])
+                }
+                if(this.currentFigure.rotation == 1){
+                    new_coord.push([fig.coord[0][0] - 2,fig.coord[0][1] + 1])
+                    new_coord.push([fig.coord[1][0] - 1,fig.coord[1][1]])
+                    new_coord.push([fig.coord[2][0],fig.coord[2][1] - 1])
+                    new_coord.push([fig.coord[3][0] + 1, fig.coord[3][1] - 2])
+                }
+                if(this.currentFigure.rotation == 2){
+                    new_coord.push([fig.coord[0][0] - 1,fig.coord[0][1] - 2])
+                    new_coord.push([fig.coord[1][0],fig.coord[1][1] - 1])
+                    new_coord.push([fig.coord[2][0] + 1,fig.coord[2][1]])
+                    new_coord.push([fig.coord[3][0] + 2,fig.coord[3][1] + 1])
+                }
+                if(this.currentFigure.rotation == 3){
+                    new_coord.push([fig.coord[0][0] + 2,fig.coord[0][1] - 1])
+                    new_coord.push([fig.coord[1][0] + 1,fig.coord[1][1]])
+                    new_coord.push([fig.coord[2][0], fig.coord[2][1] + 1])
+                    new_coord.push([fig.coord[3][0] - 1,fig.coord[3][1] + 2])
+                }
+            break;
+            case 2:
+                if(this.currentFigure.rotation == 0){
+                    new_coord.push([fig.coord[0][0], fig.coord[0][1] + 2])
+                    new_coord.push([fig.coord[1][0] - 1, fig.coord[1][1] + 1])
+                    new_coord.push([fig.coord[2][0], fig.coord[2][1]])
+                    new_coord.push([fig.coord[3][0] - 1, fig.coord[3][1] - 1])
+                }
+                if(this.currentFigure.rotation == 1){
+                    new_coord.push([fig.coord[0][0] - 2,fig.coord[0][1]])
+                    new_coord.push([fig.coord[1][0] - 1,fig.coord[1][1] - 1])
+                    new_coord.push([fig.coord[2][0],fig.coord[2][1]])
+                    new_coord.push([fig.coord[3][0] + 1, fig.coord[3][1] - 1])
+                }
+                if(this.currentFigure.rotation == 2){
+                    new_coord.push([fig.coord[0][0],fig.coord[0][1] - 2])
+                    new_coord.push([fig.coord[1][0] + 1,fig.coord[1][1] - 1])
+                    new_coord.push([fig.coord[2][0], fig.coord[2][1]])
+                    new_coord.push([fig.coord[3][0] + 1,fig.coord[3][1] + 1])
+                }
+                if(this.currentFigure.rotation == 3){
+                    new_coord.push([fig.coord[0][0] + 2,fig.coord[0][1]])
+                    new_coord.push([fig.coord[1][0] + 1,fig.coord[1][1] + 1])
+                    new_coord.push([fig.coord[2][0], fig.coord[2][1]])
+                    new_coord.push([fig.coord[3][0] - 1,fig.coord[3][1] + 1])
+                }
+            break;
+            case 3:
+                if(this.currentFigure.rotation == 0){
+                    new_coord.push([fig.coord[0][0] + 1, fig.coord[0][1] + 1])
+                    new_coord.push([fig.coord[1][0], fig.coord[1][1]])
+                    new_coord.push([fig.coord[2][0] - 1, fig.coord[2][1] + 1])
+                    new_coord.push([fig.coord[3][0] - 2, fig.coord[3][1]])
+                }
+                if(this.currentFigure.rotation == 1){
+                    new_coord.push([fig.coord[0][0] - 1,fig.coord[0][1] + 1])
+                    new_coord.push([fig.coord[1][0],fig.coord[1][1]])
+                    new_coord.push([fig.coord[2][0] - 1,fig.coord[2][1] - 1])
+                    new_coord.push([fig.coord[3][0], fig.coord[3][1] - 2])
+                }
+                if(this.currentFigure.rotation == 2){
+                    new_coord.push([fig.coord[0][0] - 1,fig.coord[0][1] - 1])
+                    new_coord.push([fig.coord[1][0],fig.coord[1][1]])
+                    new_coord.push([fig.coord[2][0] + 1, fig.coord[2][1] - 1])
+                    new_coord.push([fig.coord[3][0] + 2,fig.coord[3][1]])
+                }
+                if(this.currentFigure.rotation == 3){
+                    new_coord.push([fig.coord[0][0] + 1,fig.coord[0][1] - 1])
+                    new_coord.push([fig.coord[1][0],fig.coord[1][1]])
+                    new_coord.push([fig.coord[2][0] + 1, fig.coord[2][1] + 1])
+                    new_coord.push([fig.coord[3][0],fig.coord[3][1] + 2])
+                }
+            break;
+            case 4:
+                new_coord = fig.coord
+                break;
+            case 5:
+                if(this.currentFigure.rotation == 0){
+                    new_coord.push([fig.coord[0][0] - 1, fig.coord[0][1] + 1])
+                    new_coord.push([fig.coord[1][0] + 1, fig.coord[1][1] + 1])
+                    new_coord.push([fig.coord[2][0], fig.coord[2][1]])
+                    new_coord.push([fig.coord[3][0] - 1, fig.coord[3][1] - 1])
+                }
+                if(this.currentFigure.rotation == 1){
+                    new_coord.push([fig.coord[0][0] - 1,fig.coord[0][1] - 1])
+                    new_coord.push([fig.coord[1][0] - 1,fig.coord[1][1] + 1])
+                    new_coord.push([fig.coord[2][0], fig.coord[2][1]])
+                    new_coord.push([fig.coord[3][0] + 1, fig.coord[3][1] - 1])
+                }
+                if(this.currentFigure.rotation == 2){
+                    new_coord.push([fig.coord[0][0] + 1,fig.coord[0][1] - 1])
+                    new_coord.push([fig.coord[1][0] - 1,fig.coord[1][1] - 1])
+                    new_coord.push([fig.coord[2][0], fig.coord[2][1]])
+                    new_coord.push([fig.coord[3][0] + 1,fig.coord[3][1] + 1])
+                }
+                if(this.currentFigure.rotation == 3){
+                    new_coord.push([fig.coord[0][0] + 1,fig.coord[0][1] + 1])
+                    new_coord.push([fig.coord[1][0] + 1,fig.coord[1][1] - 1])
+                    new_coord.push([fig.coord[2][0], fig.coord[2][1]])
+                    new_coord.push([fig.coord[3][0] - 1,fig.coord[3][1] + 1])
+                }
+            break;
+            case 6:
+                if(this.currentFigure.rotation == 0){
+                    new_coord.push([fig.coord[0][0], fig.coord[0][1] + 2])
+                    new_coord.push([fig.coord[1][0] + 1, fig.coord[1][1] + 1])
+                    new_coord.push([fig.coord[2][0], fig.coord[2][1]])
+                    new_coord.push([fig.coord[3][0] - 1, fig.coord[3][1] - 1])
+                }
+                if(this.currentFigure.rotation == 1){
+                    new_coord.push([fig.coord[0][0] - 2,fig.coord[0][1]])
+                    new_coord.push([fig.coord[1][0] - 1,fig.coord[1][1] + 1])
+                    new_coord.push([fig.coord[2][0], fig.coord[2][1]])
+                    new_coord.push([fig.coord[3][0] + 1, fig.coord[3][1] - 1])
+                }
+                if(this.currentFigure.rotation == 2){
+                    new_coord.push([fig.coord[0][0],fig.coord[0][1] - 2])
+                    new_coord.push([fig.coord[1][0] - 1,fig.coord[1][1] - 1])
+                    new_coord.push([fig.coord[2][0], fig.coord[2][1]])
+                    new_coord.push([fig.coord[3][0] + 1,fig.coord[3][1] + 1])
+                }
+                if(this.currentFigure.rotation == 3){
+                    new_coord.push([fig.coord[0][0] + 2,fig.coord[0][1]])
+                    new_coord.push([fig.coord[1][0] + 1,fig.coord[1][1] - 1])
+                    new_coord.push([fig.coord[2][0], fig.coord[2][1]])
+                    new_coord.push([fig.coord[3][0] - 1,fig.coord[3][1] + 1])
+                }
+            break;
+            case 7:
+                if(this.currentFigure.rotation == 0){
+                    new_coord.push([fig.coord[0][0] - 2, fig.coord[0][1]])
+                    new_coord.push([fig.coord[1][0] + 1, fig.coord[1][1] + 1])
+                    new_coord.push([fig.coord[2][0], fig.coord[2][1]])
+                    new_coord.push([fig.coord[3][0] - 1, fig.coord[3][1] - 1])
+                }
+                if(this.currentFigure.rotation == 1){
+                    new_coord.push([fig.coord[0][0],fig.coord[0][1] - 2])
+                    new_coord.push([fig.coord[1][0] - 1,fig.coord[1][1] + 1])
+                    new_coord.push([fig.coord[2][0], fig.coord[2][1]])
+                    new_coord.push([fig.coord[3][0] + 1, fig.coord[3][1] - 1])
+                }
+                if(this.currentFigure.rotation == 2){
+                    new_coord.push([fig.coord[0][0] + 2,fig.coord[0][1]])
+                    new_coord.push([fig.coord[1][0] - 1,fig.coord[1][1] - 1])
+                    new_coord.push([fig.coord[2][0], fig.coord[2][1]])
+                    new_coord.push([fig.coord[3][0] + 1,fig.coord[3][1] + 1])
+                }
+                if(this.currentFigure.rotation == 3){
+                    new_coord.push([fig.coord[0][0],fig.coord[0][1] + 2])
+                    new_coord.push([fig.coord[1][0] + 1,fig.coord[1][1] - 1])
+                    new_coord.push([fig.coord[2][0], fig.coord[2][1]])
+                    new_coord.push([fig.coord[3][0] - 1,fig.coord[3][1] + 1])
+                }
+            break;
+            
+            default:
+                break;
+        }
+        if(this.cellIsOutOfBounds(new_coord)){
+            var flag = 0;
+            for (let i = 0; i < 4; i++) {
+                if(new_coord[i][1] < 0){
+                    flag = 1;
+                }
+            }
+            for (let i = 0; i < 4; i++) {
+                if(new_coord[i][0] < 0){
+                    flag = 2;
+                }
+            }
+            if(flag == 0){
+                for (let i = 0; i < 4; i++) {
+                    if(this.currentFigure.figureId == 1){
+                        new_coord[i][1] -= 2;
+                    }
+                    if(this.currentFigure.figureId != 1 && this.currentFigure.figureId != 4){
+                        new_coord[i][1] -= 1;
+                    }
+                }
+            }
+            else if(flag == 1) {
+                for (let i = 0; i < 4; i++) {
+                    if(this.currentFigure.figureId == 1){
+                        new_coord[i][1] += 2;
+                    }
+                    if(this.currentFigure.figureId != 1 && this.currentFigure.figureId != 4){
+                        new_coord[i][1] += 1;
+                    }
+                }
+            }
+            else if(flag == 2) {
+                for (let i = 0; i < 4; i++) {
+                    if(this.currentFigure.figureId == 1){
+                        new_coord[i][0] += 2;
+                    }
+                    if(this.currentFigure.figureId != 1 && this.currentFigure.figureId != 4 ){
+                        new_coord[i][0] += 1;
+                    }
+                }
+            }
+        }
+        if(this.isCellArleadyInField(new_coord)){
+            for (let i = 0; i < 4; i++) {
+                if(this.currentFigure.figureId == 1){
+                    new_coord[i][0] += 2;
+                }
+                if(this.currentFigure.figureId != 1 && this.currentFigure.figureId != 4 ){
+                    new_coord[i][0] += 1;
+                }
+            }
+            // this.moveRight();
+            // if(this.isCellArleadyInField(new_coord)){
+            //     this.moveLeft();
+            // }
+        }
 
+        if(!this.isCellArleadyInField(new_coord)){
+            new_fig.color = this.currentFigure.color;
+            new_fig.figureId = this.currentFigure.figureId;
+            new_fig.rotation = (this.currentFigure.rotation + 1) % 4;
+            new_fig.coord = new_coord;
+            this.removeFigure(this.currentFigure);
+            this.currentFigure = new_fig;
+            this.showFigure(new_fig);
+        }
     }
-
     onNewFigure(){
         this.globalCount = 0;
         var figure = this.returnRandomFigure();
@@ -213,15 +453,16 @@ class field{
         this.showFigure(this.currentFigure);
         var counter = setInterval(() => {
             if(!this.isMoveable(this.currentFigure, 2)){
-                if(this.count == 3 || this.globalCount >= 10){
+                console.log(1 / this.velocity);
+                this.count++;
+                this.globalCount++;
+                if(this.count >= 1000 / this.velocity
+                    || this.globalCount >= 3000 / this.velocity){
+                    
                     this.count = 0;
                     this.setFigureOnPlace(this.currentFigure);
                     this.onNewFigure();
                     clearInterval(counter);
-                }
-                else{
-                    this.count++;
-                    this.globalCount++;
                 }
             }
             this.moveDown(this.currentFigure);
@@ -242,3 +483,6 @@ class field{
 // 7 - оранжевая(перевернутая буква Г)
 
 // если при повороте встречается преграда, то поднять фигуру на один блок выше, если 
+
+// 1 = x * velocity(1000)
+// x = 1000/velocity
