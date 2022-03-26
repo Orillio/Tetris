@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous">
+    </script>
+    <!-- <script src="js/game.js"></script> -->
+    <script src="js/figure.js"></script>
+    <script src="js/script.js"></script>
+    <title>Тетрис</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="flex header_container">
+                <div class="logo">
+                    Тетрис 
+                </div>
+                <div class="login_buttons">
+                    <a class="login button" href="#"><span>Войти</span></a>
+                    <a class="register button" href="#"><span>Зарегистрироваться</span></a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="field_cont">
+                <div class="field">
+                    <div class="row">
+                        <div class="cell cell19-0"></div>
+                        <div class="cell cell19-1"></div>
+                        <div class="cell cell19-2"></div>
+                        <div class="cell cell19-3"></div>
+                        <div class="cell cell19-4"></div>
+                        <div class="cell cell19-5"></div>
+                        <div class="cell cell19-6"></div>
+                        <div class="cell cell19-7"></div>
+                        <div class="cell cell19-8"></div>
+                        <div class="cell cell19-9"></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell cell18-0"></div>
+                        <div class="cell cell18-1"></div>
+                        <div class="cell cell18-2"></div>
+                        <div class="cell cell18-3"></div>
+                        <div class="cell cell18-4"></div>
+                        <div class="cell cell18-5"></div>
+                        <div class="cell cell18-6"></div>
+                        <div class="cell cell18-7"></div>
+                        <div class="cell cell18-8"></div>
+                        <div class="cell cell18-9"></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell cell17-0"></div>
+                        <div class="cell cell17-1"></div>
+                        <div class="cell cell17-2"></div>
+                        <div class="cell cell17-3"></div>
+                        <div class="cell cell17-4"></div>
+                        <div class="cell cell17-5"></div>
+                        <div class="cell cell17-6"></div>
+                        <div class="cell cell17-7"></div>
+                        <div class="cell cell17-8"></div>
+                        <div class="cell cell17-9"></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell cell16-0"></div>
+                        <div class="cell cell16-1"></div>
+                        <div class="cell cell16-2"></div>
+                        <div class="cell cell16-3"></div>
+                        <div class="cell cell16-4"></div>
+                        <div class="cell cell16-5"></div>
+                        <div class="cell cell16-6"></div>
+                        <div class="cell cell16-7"></div>
+                        <div class="cell cell16-8"></div>
+                        <div class="cell cell16-9"></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell cell15-0"></div>
+                        <div class="cell cell15-1"></div>
+                        <div class="cell cell15-2"></div>
+                        <div class="cell cell15-3"></div>
+                        <div class="cell cell15-4"></div>
+                        <div class="cell cell15-5"></div>
+                        <div class="cell cell15-6"></div>
+                        <div class="cell cell15-7"></div>
+                        <div class="cell cell15-8"></div>
+                        <div class="cell cell15-9"></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell cell14-0"></div>
+                        <div class="cell cell14-1"></div>
+                        <div class="cell cell14-2"></div>
+                        <div class="cell cell14-3"></div>
+                        <div class="cell cell14-4"></div>
+                        <div class="cell cell14-5"></div>
+                        <div class="cell cell14-6"></div>
+                        <div class="cell cell14-7"></div>
+                        <div class="cell cell14-8"></div>
+                        <div class="cell cell14-9"></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell cell13-0"></div>
+                        <div class="cell cell13-1"></div>
+                        <div class="cell cell13-2"></div>
+                        <div class="cell cell13-3"></div>
+                        <div class="cell cell13-4"></div>
+                        <div class="cell cell13-5"></div>
+                        <div class="cell cell13-6"></div>
+                        <div class="cell cell13-7"></div>
+                        <div class="cell cell13-8"></div>
+                        <div class="cell cell13-9"></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell cell12-0"></div>
+                        <div class="cell cell12-1"></div>
+                        <div class="cell cell12-2"></div>
+                        <div class="cell cell12-3"></div>
+                        <div class="cell cell12-4"></div>
+                        <div class="cell cell12-5"></div>
+                        <div class="cell cell12-6"></div>
+                        <div class="cell cell12-7"></div>
+                        <div class="cell cell12-8"></div>
+                        <div class="cell cell12-9"></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell cell11-0"></div>
+                        <div class="cell cell11-1"></div>
+                        <div class="cell cell11-2"></div>
+                        <div class="cell cell11-3"></div>
+                        <div class="cell cell11-4"></div>
+                        <div class="cell cell11-5"></div>
+                        <div class="cell cell11-6"></div>
+                        <div class="cell cell11-7"></div>
+                        <div class="cell cell11-8"></div>
+                        <div class="cell cell11-9"></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell cell10-0"></div>
+                        <div class="cell cell10-1"></div>
+                        <div class="cell cell10-2"></div>
+                        <div class="cell cell10-3"></div>
+                        <div class="cell cell10-4"></div>
+                        <div class="cell cell10-5"></div>
+                        <div class="cell cell10-6"></div>
+                        <div class="cell cell10-7"></div>
+                        <div class="cell cell10-8"></div>
+                        <div class="cell cell10-9"></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell cell9-0"></div>
+                        <div class="cell cell9-1"></div>
+                        <div class="cell cell9-2"></div>
+                        <div class="cell cell9-3"></div>
+                        <div class="cell cell9-4"></div>
+                        <div class="cell cell9-5"></div>
+                        <div class="cell cell9-6"></div>
+                        <div class="cell cell9-7"></div>
+                        <div class="cell cell9-8"></div>
+                        <div class="cell cell9-9"></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell cell8-0"></div>
+                        <div class="cell cell8-1"></div>
+                        <div class="cell cell8-2"></div>
+                        <div class="cell cell8-3"></div>
+                        <div class="cell cell8-4"></div>
+                        <div class="cell cell8-5"></div>
+                        <div class="cell cell8-6"></div>
+                        <div class="cell cell8-7"></div>
+                        <div class="cell cell8-8"></div>
+                        <div class="cell cell8-9"></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell cell7-0"></div>
+                        <div class="cell cell7-1"></div>
+                        <div class="cell cell7-2"></div>
+                        <div class="cell cell7-3"></div>
+                        <div class="cell cell7-4"></div>
+                        <div class="cell cell7-5"></div>
+                        <div class="cell cell7-6"></div>
+                        <div class="cell cell7-7"></div>
+                        <div class="cell cell7-8"></div>
+                        <div class="cell cell7-9"></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell cell6-0"></div>
+                        <div class="cell cell6-1"></div>
+                        <div class="cell cell6-2"></div>
+                        <div class="cell cell6-3"></div>
+                        <div class="cell cell6-4"></div>
+                        <div class="cell cell6-5"></div>
+                        <div class="cell cell6-6"></div>
+                        <div class="cell cell6-7"></div>
+                        <div class="cell cell6-8"></div>
+                        <div class="cell cell6-9"></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell cell5-0"></div>
+                        <div class="cell cell5-1"></div>
+                        <div class="cell cell5-2"></div>
+                        <div class="cell cell5-3"></div>
+                        <div class="cell cell5-4"></div>
+                        <div class="cell cell5-5"></div>
+                        <div class="cell cell5-6"></div>
+                        <div class="cell cell5-7"></div>
+                        <div class="cell cell5-8"></div>
+                        <div class="cell cell5-9"></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell cell4-0"></div>
+                        <div class="cell cell4-1"></div>
+                        <div class="cell cell4-2"></div>
+                        <div class="cell cell4-3"></div>
+                        <div class="cell cell4-4"></div>
+                        <div class="cell cell4-5"></div>
+                        <div class="cell cell4-6"></div>
+                        <div class="cell cell4-7"></div>
+                        <div class="cell cell4-8"></div>
+                        <div class="cell cell4-9"></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell cell3-0"></div>
+                        <div class="cell cell3-1"></div>
+                        <div class="cell cell3-2"></div>
+                        <div class="cell cell3-3"></div>
+                        <div class="cell cell3-4"></div>
+                        <div class="cell cell3-5"></div>
+                        <div class="cell cell3-6"></div>
+                        <div class="cell cell3-7"></div>
+                        <div class="cell cell3-8"></div>
+                        <div class="cell cell3-9"></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell cell2-0"></div>
+                        <div class="cell cell2-1"></div>
+                        <div class="cell cell2-2"></div>
+                        <div class="cell cell2-3"></div>
+                        <div class="cell cell2-4"></div>
+                        <div class="cell cell2-5"></div>
+                        <div class="cell cell2-6"></div>
+                        <div class="cell cell2-7"></div>
+                        <div class="cell cell2-8"></div>
+                        <div class="cell cell2-9"></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell cell1-0"></div>
+                        <div class="cell cell1-1"></div>
+                        <div class="cell cell1-2"></div>
+                        <div class="cell cell1-3"></div>
+                        <div class="cell cell1-4"></div>
+                        <div class="cell cell1-5"></div>
+                        <div class="cell cell1-6"></div>
+                        <div class="cell cell1-7"></div>
+                        <div class="cell cell1-8"></div>
+                        <div class="cell cell1-9"></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell cell0-0"></div>
+                        <div class="cell cell0-1"></div>
+                        <div class="cell cell0-2"></div>
+                        <div class="cell cell0-3"></div>
+                        <div class="cell cell0-4"></div>
+                        <div class="cell cell0-5"></div>
+                        <div class="cell cell0-6"></div>
+                        <div class="cell cell0-7"></div>
+                        <div class="cell cell0-8"></div>
+                        <div class="cell cell0-9"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
