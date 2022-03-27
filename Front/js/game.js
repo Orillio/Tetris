@@ -1,3 +1,4 @@
+
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
@@ -52,6 +53,10 @@ class figure{
                 this.figureId = 7;
                 this.coord.push([19,5], [18,3], [18,4], [18, 5]);
                 break;
+            case 7:
+                this.color = "gray";
+                this.figureId = 8;
+                break;
             default:
                 break;
         }
@@ -98,6 +103,7 @@ class field{
     cells = [[]]
     figures = [];
     currentFigure;
+    shadow;
     counter;
     velocity;
     count = 0;
@@ -160,6 +166,7 @@ class field{
         for (let i = 0; i < 4; i++) {
             this.cells[figure.coord[i][0]][figure.coord[i][1]] = 1;
         }
+        this.removePendingRows();
     }
     // 1 - right direction, 2 - down dir, 3- left dir
     isMoveable(figure, direction){
@@ -181,22 +188,20 @@ class field{
         return true;
     }
     moveDown(){
-        if(!this.isMoveable(this.currentFigure, 2)){
-            var counter = setTimeout(() => {
-            }, 1000);
-            return;
+        if(this.isMoveable(this.currentFigure, 2)){
+            this.removeFigure(this.currentFigure);
+            this.currentFigure.moveDown();
+            this.showFigure(this.currentFigure);
         }
-        this.removeFigure(this.currentFigure);
-        this.currentFigure.moveDown();
-        this.showFigure(this.currentFigure);
     }
     moveRight(){
-        console.log(this.count);
         this.count = 0;
         if(this.isMoveable(this.currentFigure, 1)){
             this.removeFigure(this.currentFigure);
             this.currentFigure.moveRight();
             this.showFigure(this.currentFigure);
+            this.remove_shadow();
+            this.put_shadow();
         }
         
     }
@@ -207,6 +212,8 @@ class field{
             this.removeFigure(this.currentFigure);
             this.currentFigure.moveLeft();
             this.showFigure(this.currentFigure);
+            this.remove_shadow();
+            this.put_shadow();
         }
     }
     changeDirection(){
@@ -443,16 +450,23 @@ class field{
             this.removeFigure(this.currentFigure);
             this.currentFigure = new_fig;
             this.showFigure(new_fig);
+            this.remove_shadow();
+            this.put_shadow();
+            
         }
     }
     removeRow(rowIndex){
+        this.cells.splice(rowIndex, 1);
+        this.cells.push([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
         $(`.row${rowIndex}`).remove();
         for (let i = rowIndex + 1; i < 20; i++) {
             var element = $(`.row${i}`);
             element.removeClass(`row${i}`);
             element.addClass(`row${i - 1}`);
             for (let j = 0; j < 10; j++) {
-                
+                var element = $(`.cell${i}-${j}`);
+                element.removeClass(`cell${i}-${j}`);
+                element.addClass(`cell${i-1}-${j}`);
             }
         }
         $(".field").prepend(`
@@ -471,8 +485,9 @@ class field{
         `);
     }
     removePendingRows(){
-        for (let i = 0; i < 20; i++) {
-            var flag = false
+        var removedRows = 0;
+        for (let i = 0; i < 20 - removedRows; i++) {
+            var flag = false;
             for (let j = 0; j < 10; j++) {
                 if(this.cells[i][j] != 1){
                     flag = true;
@@ -480,8 +495,25 @@ class field{
             }
             if(!flag){
                 this.removeRow(i);
+                i--;
+                removedRows++;
             }
         }
+    }
+    put_shadow(){
+        this.shadow = new figure(7);
+        for (let i = 0; i < 4; i++) {
+            this.shadow.coord.push([this.currentFigure.coord[i][0], this.currentFigure.coord[i][1]]);   
+        }
+        this.shadow.rotation = this.currentFigure.rotation;
+        while(!this.cellIsOutOfBounds(this.shadow.newCoordDown()) && !this.isCellArleadyInField(this.shadow.newCoordDown())){
+            console.log(this.shadow.newCoordDown());
+            this.shadow.moveDown();
+        }
+        this.showFigure(this.shadow);
+    }
+    remove_shadow(){
+        this.removeFigure(this.shadow);
     }
     onNewFigure(){
         if(!this.gamestarted) return;
@@ -494,6 +526,7 @@ class field{
         }
         this.currentFigure = figure;
         this.showFigure(this.currentFigure);
+        this.put_shadow();
         this.counter = setInterval(() => {
             if(!this.isMoveable(this.currentFigure, 2)){
                 this.count++;
@@ -503,12 +536,14 @@ class field{
                     this.count = 0;
                     clearInterval(this.counter);
                     this.setFigureOnPlace(this.currentFigure);
-                    this.removePendingRows();
+                    this.remove_shadow();
                     this.onNewFigure();
                     return;
                 }
             }
-            this.moveDown(this.currentFigure);
+            else{
+                this.moveDown(this.currentFigure);
+            }
         }, this.velocity);
     }
     hardDrop(){
@@ -519,8 +554,9 @@ class field{
             this.currentFigure.moveDown();
         }
         this.count = 0;
-        this.setFigureOnPlace(this.currentFigure);
         this.showFigure(this.currentFigure);
+        this.setFigureOnPlace(this.currentFigure);
+        this.remove_shadow();
         this.onNewFigure();
         
     }
@@ -528,7 +564,6 @@ class field{
         this.gamestarted = true;
         this.velocity = velocity;
         this.onNewFigure();
-        this.removeRow(0);
     }
     clearField(){
         this.cells = [];
@@ -554,6 +589,7 @@ class field{
 // 5 - фиолетовая(буква Т)
 // 6 - синяя(буква Г)
 // 7 - оранжевая(перевернутая буква Г)
+// 8 - серый(тень)
 
 // если при повороте встречается преграда, то поднять фигуру на один блок выше, если 
 

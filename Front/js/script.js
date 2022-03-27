@@ -11,7 +11,9 @@ jQuery(function(){
     // 32 - space, 37 - leftArrow, 38 - uparrow 39 - rightarrow, 40 - downarrow
     var map = {32: false, 37: false, 38: false, 39: false, 40: false};
     jQuery(document).on( "keydown", function(e) {
-        console.log(e);
+        if(e.keyCode == 32){
+            f.hardDrop();
+        }
         if(e.keyCode in map){
 
             if(e.keyCode == 37 && !map[e.keyCode]){
@@ -57,9 +59,6 @@ jQuery(function(){
         }
         if(e.keyCode == 38){
             f.changeDirection();
-        }
-        if(e.keyCode == 32){
-            f.hardDrop();
         }
     };
 });

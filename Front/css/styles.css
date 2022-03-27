@@ -83,27 +83,27 @@ main{
     width: 30px;
 }
 .blue{
-    background-color: blue;
+    background-color: blue !important;
 }
 .red{
-    background-color: red;
+    background-color: red !important;
 }
 .lime{
-    background-color: lime;
+    background-color: lime !important;
 }
 .yellow{
-    background-color: yellow;
+    background-color: yellow !important;
 }
 .purple{
-    background-color: purple;
+    background-color: purple !important;
 }
 .green{
-    background-color: green;
+    background-color: green !important;
 }
 .orange{
-    background-color: orange;
+    background-color: orange !important;
 }
 
-.to_be_placed{
+.gray{
     background-color: #282727;
 }
