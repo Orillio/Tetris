@@ -102,7 +102,7 @@ class field{
     velocity;
     count = 0;
     globalCount = 0;
-
+    gamestarted = false;
     constructor(){
         this.setInitial();
     }
@@ -113,7 +113,6 @@ class field{
                 this.cells[i].push(0);
             }
         }
-        console.log(this.cells);
     }
     returnRandomFigure(){
         var fig = new figure(getRandomInt(7));
@@ -446,31 +445,105 @@ class field{
             this.showFigure(new_fig);
         }
     }
+    removeRow(rowIndex){
+        $(`.row${rowIndex}`).remove();
+        for (let i = rowIndex + 1; i < 20; i++) {
+            var element = $(`.row${i}`);
+            element.removeClass(`row${i}`);
+            element.addClass(`row${i - 1}`);
+            for (let j = 0; j < 10; j++) {
+                
+            }
+        }
+        $(".field").prepend(`
+            <div class="row row19">
+                <div class="cell cell19-0"></div>
+                <div class="cell cell19-1"></div>
+                <div class="cell cell19-2"></div>
+                <div class="cell cell19-3"></div>
+                <div class="cell cell19-4"></div>
+                <div class="cell cell19-5"></div>
+                <div class="cell cell19-6"></div>
+                <div class="cell cell19-7"></div>
+                <div class="cell cell19-8"></div>
+                <div class="cell cell19-9"></div>
+            </div>
+        `);
+    }
+    removePendingRows(){
+        for (let i = 0; i < 20; i++) {
+            var flag = false
+            for (let j = 0; j < 10; j++) {
+                if(this.cells[i][j] != 1){
+                    flag = true;
+                }
+            }
+            if(!flag){
+                this.removeRow(i);
+            }
+        }
+    }
     onNewFigure(){
+        if(!this.gamestarted) return;
+        this.counter = 0;
         this.globalCount = 0;
         var figure = this.returnRandomFigure();
+        if(this.isCellArleadyInField(figure.coord)){
+            this.abortGame(0);
+            return;
+        }
         this.currentFigure = figure;
         this.showFigure(this.currentFigure);
-        var counter = setInterval(() => {
+        this.counter = setInterval(() => {
             if(!this.isMoveable(this.currentFigure, 2)){
-                console.log(1 / this.velocity);
                 this.count++;
                 this.globalCount++;
                 if(this.count >= 1000 / this.velocity
-                    || this.globalCount >= 3000 / this.velocity){
-                    
+                    || this.globalCount >= 10000 / this.velocity){
                     this.count = 0;
+                    clearInterval(this.counter);
                     this.setFigureOnPlace(this.currentFigure);
+                    this.removePendingRows();
                     this.onNewFigure();
-                    clearInterval(counter);
+                    return;
                 }
             }
             this.moveDown(this.currentFigure);
         }, this.velocity);
     }
+    hardDrop(){
+        if(!this.gamestarted) return;
+        clearInterval(this.counter);
+        this.removeFigure(this.currentFigure);
+        while(this.isMoveable(this.currentFigure, 2)){
+            this.currentFigure.moveDown();
+        }
+        this.count = 0;
+        this.setFigureOnPlace(this.currentFigure);
+        this.showFigure(this.currentFigure);
+        this.onNewFigure();
+        
+    }
     startGame(velocity){
+        this.gamestarted = true;
         this.velocity = velocity;
         this.onNewFigure();
+        this.removeRow(0);
+    }
+    clearField(){
+        this.cells = [];
+        this.setInitial();
+        for (let i = 0; i < 20; i++) {
+            for (let j = 0; j < 10; j++) {
+                $(`.cell${i}-${j}`).removeClass(['green', 'red', 'lime',
+                 'yellow', 'purple', 'blue', 'orange']);
+            }
+        }
+    }
+    abortGame(win){
+        clearInterval(this.counter);
+        this.clearField();
+        this.gamestarted = false;
     }
 }
 
