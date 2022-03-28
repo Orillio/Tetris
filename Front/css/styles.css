@@ -60,17 +60,21 @@ header{
 main{
     margin-top: 130px;
 }
+.field_cont{
+    display: flex;
+    justify-content: center;
+}
 .field{
     padding-bottom: 2px;
     position: relative;
     z-index: 11;
-    margin: 0 auto;
+    /* margin: 0 auto; */
     height: 600px;
     width: 300px;
     background-color: #090808;
     border: 2px solid rgb(138, 138, 138);
     border-top: none;
-    border-radius: 4px;
+    /* border-radius: 4px; */
 }
 .row{
     display: flex;
@@ -106,4 +110,48 @@ main{
 
 .gray{
     background-color: #282727;
+}
+.hold_in{
+    width: 160px;
+    height: 120px;
+    background-color: #090808;
+    border: 2px solid rgb(138, 138, 138);
+    border-right: none;
+}
+.holdText{
+    display: inline-block;
+    padding: 4px;
+    border-bottom: 2px solid rgb(138, 138, 138);
+    border-right: 2px solid rgb(138, 138, 138);
+}
+.next_figures_cell{
+    width: 120px;
+    height: 400px;
+    background-color: #090808;
+    border: 2px solid rgb(138, 138, 138);
+    border-left: none;
+}
+.next_figure_text{
+    display: inline-block;
+    padding: 4px;
+    border-bottom: 2px solid rgb(138, 138, 138);
+    border-right: 2px solid rgb(138, 138, 138);
+}
+.figure_flex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.figure{
+    margin: 10px 0;
+}
+.figure .cell{
+    border: none;;
+}
+.figure .row{
+    justify-content: center;
+}
+.figure .cell.yellow, .figure .cell.blue, .figure .cell.red, .figure .cell.lime,
+.figure .cell.purple, .figure .cell.green, .figure .cell.orange{
+    border: 1px solid rgb(26, 25, 25);
 }
