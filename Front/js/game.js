@@ -104,11 +104,14 @@ class field{
     figures = [];
     currentFigure;
     shadow;
+    holdingFigure;
     counter;
     velocity;
     count = 0;
     globalCount = 0;
     gamestarted = false;
+    isHolded = false;
+    next_figures = [];
     constructor(){
         this.setInitial();
     }
@@ -119,10 +122,20 @@ class field{
                 this.cells[i].push(0);
             }
         }
+        for (let i = 0; i < 5; i++) {
+            this.next_figures.push(this.returnRandomFigure());
+        }
     }
     returnRandomFigure(){
         var fig = new figure(getRandomInt(7));
         return fig;
+    }
+    returnNextFigure(){
+        return this.next_figures.pop();
+    }
+    addNextFigure(figure){
+        if(this.next_figures.length < 5)
+            this.next_figures.splice(0, 0, figure);
     }
     showFigure(figure){
         var cell1 = figure.coord[0];
@@ -134,6 +147,7 @@ class field{
         $(`.cell${cell3[0]}-${cell3[1]}`).addClass(figure.color);
         $(`.cell${cell4[0]}-${cell4[1]}`).addClass(figure.color);
     }
+    
     removeFigure(figure){
         var cell1 = figure.coord[0];
         var cell2 = figure.coord[1];
@@ -507,7 +521,6 @@ class field{
         }
         this.shadow.rotation = this.currentFigure.rotation;
         while(!this.cellIsOutOfBounds(this.shadow.newCoordDown()) && !this.isCellArleadyInField(this.shadow.newCoordDown())){
-            console.log(this.shadow.newCoordDown());
             this.shadow.moveDown();
         }
         this.showFigure(this.shadow);
@@ -515,11 +528,86 @@ class field{
     remove_shadow(){
         this.removeFigure(this.shadow);
     }
-    onNewFigure(){
+    hold(){
+        if(this.isHolded) return;
+        clearInterval(this.counter);
+        this.removeFigure(this.currentFigure);
+        this.remove_shadow();
+        this.removeFigureOnHoldCell();
+        this.isHolded = true;
+        if(this.holdingFigure == undefined){
+            this.holdingFigure = new figure(this.currentFigure.figureId - 1);
+            this.onNewFigure(this.returnNextFigure());
+        }
+        else{
+            var temp = new figure(this.holdingFigure.figureId - 1);
+            this.holdingFigure = new figure(this.currentFigure.figureId - 1);
+            this.onNewFigure(temp);
+        }
+        this.showFigureOnHoldCell(this.holdingFigure);
+    }
+    showFigureOnHoldCell(figure){
+        var id = figure.figureId;
+        if(id == 1){
+            for (let i = 0; i < 4; i++) {
+                $(`.fig_cell1-${i}`).addClass(figure.color);
+            }
+        }
+        if(id == 2){
+            $(`.fig_cell1-2`).addClass(figure.color);
+            $(`.fig_cell1-1`).addClass(figure.color);
+            $(`.fig_cell0-1`).addClass(figure.color);
+            $(`.fig_cell0-0`).addClass(figure.color);
+        }
+        if(id == 3){
+            $(`.fig_cell1-0`).addClass(figure.color);
+            $(`.fig_cell1-1`).addClass(figure.color);
+            $(`.fig_cell0-1`).addClass(figure.color);
+            $(`.fig_cell0-2`).addClass(figure.color);
+        }
+        if(id == 4){
+            $(`.fig_cell1-1`).addClass(figure.color);
+            $(`.fig_cell1-2`).addClass(figure.color);
+            $(`.fig_cell0-1`).addClass(figure.color);
+            $(`.fig_cell0-2`).addClass(figure.color);
+        }
+        if(id == 5){
+            $(`.fig_cell1-1`).addClass(figure.color);
+            $(`.fig_cell0-0`).addClass(figure.color);
+            $(`.fig_cell0-1`).addClass(figure.color);
+            $(`.fig_cell0-2`).addClass(figure.color);
+        }
+        if(id == 6){
+            $(`.fig_cell1-0`).addClass(figure.color);
+            $(`.fig_cell0-0`).addClass(figure.color);
+            $(`.fig_cell0-1`).addClass(figure.color);
+            $(`.fig_cell0-2`).addClass(figure.color);
+        }
+        if(id == 7){
+            $(`.fig_cell1-2`).addClass(figure.color);
+            $(`.fig_cell0-0`).addClass(figure.color);
+            $(`.fig_cell0-1`).addClass(figure.color);
+            $(`.fig_cell0-2`).addClass(figure.color);
+        }
+    }
+    removeFigureOnHoldCell(){
+        if(this.holdingFigure != undefined){
+            for (let i = 0; i < 4; i++) {
+                var el1 = $(`.fig_cell0-${i}`);
+                var el2 = $(`.fig_cell1-${i}`);
+                el1.removeAttr('class');
+                el1.attr('class', `cell fig_cell0-${i}`);
+                el2.removeAttr('class');
+                el2.attr('class', `cell fig_cell1-${i}`);
+            }
+        }
+    }
+    onNewFigure(fig){
         if(!this.gamestarted) return;
         this.counter = 0;
         this.globalCount = 0;
-        var figure = this.returnRandomFigure();
+        var figure = fig;
+        this.addNextFigure(this.returnRandomFigure());
         if(this.isCellArleadyInField(figure.coord)){
             this.abortGame(0);
             return;
@@ -536,8 +624,9 @@ class field{
                     this.count = 0;
                     clearInterval(this.counter);
                     this.setFigureOnPlace(this.currentFigure);
+                    this.isHolded = false;
                     this.remove_shadow();
-                    this.onNewFigure();
+                    this.onNewFigure(this.returnNextFigure());
                     return;
                 }
             }
@@ -546,7 +635,7 @@ class field{
             }
         }, this.velocity);
     }
-    hardDrop(){
+    hardDrop() {
         if(!this.gamestarted) return;
         clearInterval(this.counter);
         this.removeFigure(this.currentFigure);
@@ -556,14 +645,15 @@ class field{
         this.count = 0;
         this.showFigure(this.currentFigure);
         this.setFigureOnPlace(this.currentFigure);
+        this.isHolded = false;
         this.remove_shadow();
-        this.onNewFigure();
+        this.onNewFigure(this.returnNextFigure());
         
     }
     startGame(velocity){
         this.gamestarted = true;
         this.velocity = velocity;
-        this.onNewFigure();
+        this.onNewFigure(this.returnNextFigure());
     }
     clearField(){
         this.cells = [];
@@ -591,7 +681,4 @@ class field{
 // 7 - оранжевая(перевернутая буква Г)
 // 8 - серый(тень)
 
-// если при повороте встречается преграда, то поднять фигуру на один блок выше, если 
-
-// 1 = x * velocity(1000)
 // x = 1000/velocity

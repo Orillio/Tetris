@@ -14,6 +14,9 @@ jQuery(function(){
         if(e.keyCode == 32){
             f.hardDrop();
         }
+        if(e.keyCode == 16){
+            f.hold();
+        }
         if(e.keyCode in map){
 
             if(e.keyCode == 37 && !map[e.keyCode]){
