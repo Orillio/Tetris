@@ -125,8 +125,8 @@ main{
     border-right: 2px solid rgb(138, 138, 138);
 }
 .next_figures_cell{
-    width: 120px;
-    height: 400px;
+    width: 150px;
+    height: 450px;
     background-color: #090808;
     border: 2px solid rgb(138, 138, 138);
     border-left: none;
@@ -145,8 +145,8 @@ main{
 .figure{
     margin: 10px 0;
 }
-.figure .cell{
-    border: none;;
+.figure .cell, .figure_flex .cell{
+    border: none;
 }
 .figure .row{
     justify-content: center;
