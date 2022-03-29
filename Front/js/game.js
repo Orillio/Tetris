@@ -635,6 +635,7 @@ class field{
         this.currentFigure = figure;
         this.showFigure(this.currentFigure);
         this.put_shadow();
+        this.showFiguresOnNextCells();
         this.counter = setInterval(() => {
             if(!this.isMoveable(this.currentFigure, 2)){
                 this.count++;
