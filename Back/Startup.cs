@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Tetris.Models;
+using Tetris.Models.Contexts;
 
 namespace Tetris
 {
@@ -26,12 +27,13 @@ namespace Tetris
 
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddMemoryCache();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
+            
             services.AddMvc(services => services.EnableEndpointRouting = false)
-                .AddSessionStateTempDataProvider()
                 .AddSessionStateTempDataProvider();
-
             services.AddDbContext<IdentityContext>(options => 
             {
                 options.UseSqlServer(Configuration["ConnectionStrings:Identity"]);
@@ -50,7 +52,8 @@ namespace Tetris
             {
                 options.IdleTimeout = TimeSpan.FromDays(1);
             });
-            services.AddMemoryCache();
+            services.AddAuthentication();
+            services.AddAuthorization();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -59,17 +62,15 @@ namespace Tetris
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseHttpsRedirection();
-            app.UseRouting();
             app.UseStaticFiles();
-            app.UseSession();
+            app.UseRouting();
             app.UseAuthorization();
             app.UseAuthentication();
+            app.UseSession();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(null,
-                    template: "",
-                    defaults: new { controller = "Home", action = "Index" }
+                    template: "{controller=Home}/{action=Index}"
                 );
             });
 

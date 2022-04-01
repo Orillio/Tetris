@@ -1,0 +1,11 @@
+@model LoginForm
+<div class="register">
+    <h2 class="register_title">Регистрация</h2>
+    <form method="post" asp-controller="Account" asp-action="Create" class="form">
+        <div asp-validation-summary="All"></div>
+
+        <input asp-for="Username" placeholder="Login" type="text" class="input"/>
+        <input asp-for="Password" type="password"  placeholder="Password" class="input"/>
+        <button class="button button-blue" type="submit" formmethod="post" >Зарегистрироваться</button>
+    </form>
+</div>

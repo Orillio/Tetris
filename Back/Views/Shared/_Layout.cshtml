@@ -10,7 +10,6 @@
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
         crossorigin="anonymous">
     </script>
-    <!-- <script src="js/game.js"></script> -->
     <script src="~/js/game.js"></script>
     <script src="~/js/script.js"></script>
     <title>Тетрис</title>
@@ -20,11 +19,18 @@
         <div class="container">
             <div class="flex header_container">
                 <div class="logo">
-                    Тетрис 
+                    <a href="/">Тетрис</a>  
                 </div>
                 <div class="login_buttons">
-                    <a class="login button" href="#"><span>Войти</span></a>
-                    <a class="register button" href="#"><span>Зарегистрироваться</span></a>
+                    @if(ViewContext.HttpContext.User.Identity.IsAuthenticated)
+                    {
+                        <a class="logout button" asp-controller="Account" asp-action="Logout"><span>Выйти</span></a>
+                    }
+                    else
+                    {
+                        <a class="login button" asp-controller="Account" asp-action="Login" ><span>Войти</span></a>
+                        <a class="register button" asp-controller="Account" asp-action="Create"><span>Зарегистрироваться</span></a>
+                    }
                 </div>
             </div>
         </div>

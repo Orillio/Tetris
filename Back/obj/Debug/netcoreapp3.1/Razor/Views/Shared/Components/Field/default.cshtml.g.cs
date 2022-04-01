@@ -13,21 +13,42 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #nullable restore
-#line 1 "/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/Views/Shared/_ViewImports.cshtml"
+#line 1 "/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/Views/_ViewImports.cshtml"
 using Tetris;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/Views/Shared/_ViewImports.cshtml"
+#line 2 "/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/Views/_ViewImports.cshtml"
+using Tetris.Controllers;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/Views/_ViewImports.cshtml"
 using Tetris.Models;
 
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/Views/_ViewImports.cshtml"
+using Tetris.Models.Contexts;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/Views/_ViewImports.cshtml"
+using Tetris.Models.Forms;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8b5d538780cc365f2784fb740eead1bc035add1f", @"/Views/Shared/Components/Field/default.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b878c13b79a526e8f2d85ff066112020d21331bb", @"/Views/Shared/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"c24b7fd597b3e30afeec2a2149305bc18a72f6ef", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_Components_Field_default : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

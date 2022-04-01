@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "gH6kpiTkhwNdJ6yv2UXY4U2u0yI7zy+4v0yPQYlfFd+BkNdqrAyugSJDJMCGaYkMnGSNULLx+j+o3k+BckoUWA==",
+  "dgSpecHash": "50wJX83GSHLmjcp7lZORqicy+DMQps4rOH02PgzdnjPMApFBZPN+/DvqdB15vQCLluWQWiyGwg7abWdOvhpjig==",
   "success": true,
   "projectFilePath": "/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/Tetris.csproj",
   "expectedPackageFiles": [
@@ -9,11 +9,12 @@
     "/Users/ykozyrenko/.nuget/packages/microsoft.aspnetcore.identity.entityframeworkcore/3.1.0/microsoft.aspnetcore.identity.entityframeworkcore.3.1.0.nupkg.sha512",
     "/Users/ykozyrenko/.nuget/packages/microsoft.bcl.asyncinterfaces/1.1.0/microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",
     "/Users/ykozyrenko/.nuget/packages/microsoft.bcl.hashcode/1.1.0/microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
-    "/Users/ykozyrenko/.nuget/packages/microsoft.csharp/4.5.0/microsoft.csharp.4.5.0.nupkg.sha512",
+    "/Users/ykozyrenko/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/Users/ykozyrenko/.nuget/packages/microsoft.data.sqlclient/1.0.19269.1/microsoft.data.sqlclient.1.0.19269.1.nupkg.sha512",
     "/Users/ykozyrenko/.nuget/packages/microsoft.entityframeworkcore/3.1.0/microsoft.entityframeworkcore.3.1.0.nupkg.sha512",
     "/Users/ykozyrenko/.nuget/packages/microsoft.entityframeworkcore.abstractions/3.1.0/microsoft.entityframeworkcore.abstractions.3.1.0.nupkg.sha512",
     "/Users/ykozyrenko/.nuget/packages/microsoft.entityframeworkcore.analyzers/3.1.0/microsoft.entityframeworkcore.analyzers.3.1.0.nupkg.sha512",
+    "/Users/ykozyrenko/.nuget/packages/microsoft.entityframeworkcore.design/3.1.0/microsoft.entityframeworkcore.design.3.1.0.nupkg.sha512",
     "/Users/ykozyrenko/.nuget/packages/microsoft.entityframeworkcore.relational/3.1.0/microsoft.entityframeworkcore.relational.3.1.0.nupkg.sha512",
     "/Users/ykozyrenko/.nuget/packages/microsoft.entityframeworkcore.sqlserver/3.1.0/microsoft.entityframeworkcore.sqlserver.3.1.0.nupkg.sha512",
     "/Users/ykozyrenko/.nuget/packages/microsoft.extensions.caching.abstractions/3.1.0/microsoft.extensions.caching.abstractions.3.1.0.nupkg.sha512",

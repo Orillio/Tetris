@@ -14419,6 +14419,16 @@
   "RootNamespace": "Tetris",
   "Documents": [
     {
+      "FilePath": "/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/Views/_ViewStart.cshtml",
+      "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/Views/_ViewImports.cshtml",
+      "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/Views/Home/Game.cshtml",
       "TargetPath": "Views\\Home\\Game.cshtml",
       "FileKind": "mvc"
@@ -14429,8 +14439,13 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/Views/Shared/_ViewImports.cshtml",
-      "TargetPath": "Views\\Shared\\_ViewImports.cshtml",
+      "FilePath": "/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/Views/Account/Login.cshtml",
+      "TargetPath": "Views\\Account\\Login.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/Views/Account/Create.cshtml",
+      "TargetPath": "Views\\Account\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -14439,13 +14454,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/Views/Shared/Components/Field/Default.cshtml",
-      "TargetPath": "Views\\Shared\\Components\\Field\\Default.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/Views/Shared/_ViewStart.cshtml",
-      "TargetPath": "Views\\Shared\\_ViewStart.cshtml",
+      "FilePath": "/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/Views/Shared/Components/Field/default.cshtml",
+      "TargetPath": "Views\\Shared\\Components\\Field\\default.cshtml",
       "FileKind": "mvc"
     }
   ],

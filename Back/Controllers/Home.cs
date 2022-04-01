@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 
-namespace Back.Contollers
+namespace Tetris.Contollers
 {
-    public class HomeController : Controller
+    public class Home : Controller
     {
         public ViewResult Index()
         {

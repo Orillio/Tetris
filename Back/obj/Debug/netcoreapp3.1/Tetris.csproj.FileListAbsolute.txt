@@ -51,6 +51,9 @@
 /Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/obj/Debug/netcoreapp3.1/Tetris.genruntimeconfig.cache
 /Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_Layout.cshtml.g.cs
 /Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Components/Field/Default.cshtml.g.cs
-/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_ViewImports.cshtml.g.cs
-/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_ViewStart.cshtml.g.cs
 /Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/obj/Debug/netcoreapp3.1/Razor/Views/Home/Game.cshtml.g.cs
+/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/obj/Debug/netcoreapp3.1/Razor/Views/Account/Create.cshtml.g.cs
+/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/obj/Debug/netcoreapp3.1/Razor/Views/Account/Login.cshtml.g.cs
+/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/obj/Debug/netcoreapp3.1/Razor/Views/_ViewImports.cshtml.g.cs
+/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/obj/Debug/netcoreapp3.1/Razor/Views/_ViewStart.cshtml.g.cs
+/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.Design.dll

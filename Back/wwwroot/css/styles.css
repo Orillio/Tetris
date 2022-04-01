@@ -14,6 +14,9 @@ a{
     color: #fff;
     text-decoration: none;
 }
+input{
+    outline: none;
+}
 header{
     position: fixed;
     top: 0;
@@ -45,8 +48,11 @@ header{
     padding: 10px;
     border: 1px solid #4c4c4c;
     border-radius: 10px;
+    color: #fff;
+    max-width: 200px;
+    cursor: pointer;
 }
-.login{
+.login, .logout{
     margin-right: 10px;
     background-color: #252e6a;
     transition: 0.1s;
@@ -155,4 +161,58 @@ main{
 .figure .cell.purple, .figure .cell.green, .figure .cell.orange{
     border: 1px solid rgb(26, 25, 25);
     box-sizing: border-box;
+}
+
+
+.welcome h1{
+    font-weight: normal;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.welcome span{
+    display: block;
+    text-align: center;
+}
+.welcome span a{
+    color: #3aa7ff;
+    text-decoration: underline;
+}
+.register_title{
+    margin-bottom: 30px;
+    
+}
+.button-blue{
+    background-color: #252e6a;
+    transition: 0.1s;
+}
+.button-blue:hover{
+    background-color: #344092;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+}
+.input{
+    max-width: 200px;
+    display: inline-block;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 2px solid rgb(69, 181, 255);
+    transition: .5s;
+}
+.input:hover{
+    border-color: rgb(152, 243, 255);
+}
+.form a{
+    max-width: 200px;
+}
+.validation-summary-errors{
+    margin-bottom: 20px;
+}
+.validation-summary-errors li:not(:last-child){
+    margin-bottom: 10px;
+}
+.validation-summary-errors li{
+    color: rgb(255, 76, 76);
 }
