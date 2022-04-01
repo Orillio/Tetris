@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Tetris.csproj": {}
+    "/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/Tetris.csproj": {}
   },
   "projects": {
-    "/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Tetris.csproj": {
+    "/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/Tetris.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Tetris.csproj",
+        "projectUniqueName": "/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/Tetris.csproj",
         "projectName": "Tetris",
-        "projectPath": "/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Tetris.csproj",
+        "projectPath": "/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/Tetris.csproj",
         "packagesPath": "/Users/ykozyrenko/.nuget/packages/",
-        "outputPath": "/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/obj/",
+        "outputPath": "/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/ykozyrenko/.nuget/NuGet/NuGet.Config"
@@ -24,7 +24,6 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -36,7 +35,16 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -55,7 +63,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/6.0.200/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/3.1.416/RuntimeIdentifierGraph.json"
         }
       }
     }

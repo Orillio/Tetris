@@ -12432,6 +12432,23 @@
         }
       },
       {
+        "HashCode": -705607967,
+        "Kind": "MVC.ViewComponent",
+        "Name": "__Generated__FieldViewComponentTagHelper",
+        "AssemblyName": "Tetris",
+        "CaseSensitive": false,
+        "TagMatchingRules": [
+          {
+            "TagName": "vc:field"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "ITagHelper",
+          "Common.TypeName": "__Generated__FieldViewComponentTagHelper",
+          "MVC.ViewComponent.Name": "Field"
+        }
+      },
+      {
         "HashCode": 1342982883,
         "Kind": "Components.Bind",
         "Name": "Bind",
@@ -14400,6 +14417,37 @@
     "CSharpLanguageVersion": 800
   },
   "RootNamespace": "Tetris",
-  "Documents": [],
+  "Documents": [
+    {
+      "FilePath": "/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/Views/Home/Game.cshtml",
+      "TargetPath": "Views\\Home\\Game.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/Views/Home/Index.cshtml",
+      "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/Views/Shared/_ViewImports.cshtml",
+      "TargetPath": "Views\\Shared\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/Views/Shared/_Layout.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/Views/Shared/Components/Field/Default.cshtml",
+      "TargetPath": "Views\\Shared\\Components\\Field\\Default.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/Views/Shared/_ViewStart.cshtml",
+      "TargetPath": "Views\\Shared\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    }
+  ],
   "SerializationFormat": "0.2"
 }
