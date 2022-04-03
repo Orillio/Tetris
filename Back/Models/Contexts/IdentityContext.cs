@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Tetris.Models.Contexts
 {
-    public class IdentityContext : IdentityDbContext<IdentityUser>
+    public class IdentityContext : IdentityDbContext<TetrisUser>
     {
         public IdentityContext(DbContextOptions<IdentityContext> options) : base(options) { }
     }

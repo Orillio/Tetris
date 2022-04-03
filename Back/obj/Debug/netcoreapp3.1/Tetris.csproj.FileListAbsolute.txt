@@ -57,3 +57,4 @@
 /Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/obj/Debug/netcoreapp3.1/Razor/Views/_ViewImports.cshtml.g.cs
 /Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/obj/Debug/netcoreapp3.1/Razor/Views/_ViewStart.cshtml.g.cs
 /Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.Design.dll
+/Users/ykozyrenko/Desktop/NET/ASP.NET Projects/Tetris/Back/bin/Debug/netcoreapp3.1/jsconfig.json

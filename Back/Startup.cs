@@ -38,7 +38,7 @@ namespace Tetris
             {
                 options.UseSqlServer(Configuration["ConnectionStrings:Identity"]);
             });
-            services.AddIdentity<IdentityUser, IdentityRole>(options => {
+            services.AddIdentity<TetrisUser, IdentityRole>(options => {
                 options.Password.RequireDigit = false;
                 options.Password.RequireLowercase = false;
                 options.Password.RequireNonAlphanumeric = false;
